@@ -38,7 +38,7 @@ public class Client{
 		
 		//convert decimal to binary
 		String binaryString = converter.outputBinary();
-		System.out.println("The binary represenation of decimal" + inputDecimal + " is " + binaryString);
+		System.out.println("The binary represenation of decimal " + inputDecimal + " is " + binaryString);
 		
 		//verify the binary
 		Verifier verifier1 = new Verifier();
@@ -47,7 +47,7 @@ public class Client{
 			System.out.println("Binary number " + binaryString + " can be converted back the original decimal number " + inputDecimal);
 		
 		//convert the decimal to hexadecimal
-		System.out.println("The hexadecimal represenation of decimal" + inputDecimal + " is " + converter.decimalToHexadecimal());
+		System.out.println("The hexadecimal represenation of decimal " + inputDecimal + " is " + converter.decimalToHexadecimal());
 	}
 	
 	
