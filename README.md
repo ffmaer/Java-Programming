@@ -15,7 +15,7 @@ Program 2
 
 Enter a decimal number between 0 and 255, for example 22: 255
 
-The binary represenation of decimal255 is 11111111
+The binary represenation of decimal 255 is 11111111
 
 Binary number 11111111 can be converted back the original decimal number 255
 
