@@ -102,7 +102,8 @@ public class Craps{
 
 		//As a normal, we need to read instruction before playing the game.
 		
-		System.out.print(     "\n ***************************************************************"
+		JOptionPane.showMessageDialog(null,
+							"\n ***************************************************************"
 							+ "\n ***********************INSTRUCTIONS****************************"
 							+ "\n ***************************************************************"
 							+ "\n ** Two players take turns and one player plays each time."
@@ -187,7 +188,7 @@ public class Craps{
 	
 	private static void firstTurn(Dice player1, Dice player2, Dice player){
 		
-		System.out.println("This is " + player.getPlayerName() +"'s turn. Your balance is " + player.getPlayerBalance());
+		JOptionPane.showMessageDialog(null,"This is " + player.getPlayerName() +"'s turn. Your balance is " + player.getPlayerBalance());
 		processingBet = player.bet();
 			
 		JOptionPane.showMessageDialog(null,"Let's see the number...","Good luck!",JOptionPane.WARNING_MESSAGE);
@@ -196,8 +197,8 @@ public class Craps{
 		processingRoll2 = Dice.roll();
 		processingSum = processingRoll1 + processingRoll2;
 		
-		System.out.println("You roll " + processingRoll1 + " and " + processingRoll2);
-		System.out.println("The sum of your dice is " + processingSum + "\n");
+		JOptionPane.showMessageDialog(null,"You roll " + processingRoll1 + " and " + processingRoll2);
+		JOptionPane.showMessageDialog(null,"The sum of your dice is " + processingSum + "\n");
 		
 		if(processingSum == 7 || processingSum == 11)
 		{
@@ -206,7 +207,7 @@ public class Craps{
 			isLose(player1, player2, player, processingBet);
 		}else{
 			
-			System.out.println("In order to win, you should roll " + processingSum);
+			JOptionPane.showMessageDialog(null,"In order to win, you should roll " + processingSum);
 			nextTurn(player1, player2, player, processingSum);
 		}
 	}
@@ -217,7 +218,7 @@ public class Craps{
 		
 		if(player.getPlayerBalance() >= Dice.getPlayerGoal()){
 			
-			System.out.println(player.getPlayerName() +" wins this turn.");
+			JOptionPane.showMessageDialog(null,player.getPlayerName() +" wins this turn.");
 			System.out.print( "\n **************************************************************"
 							+ "\n *"
 							+ "\n * " + player.getPlayerName() + " 's bet " + bet + " dollars are added to the balance."
@@ -274,7 +275,7 @@ public class Craps{
 			player.getPlayerName() + "! You wins this turn!"
 			,"Congratulations!",JOptionPane.WARNING_MESSAGE);
 			
-			System.out.println(player.getPlayerName() +" wins this turn.");
+			JOptionPane.showMessageDialog(null,player.getPlayerName() +" wins this turn.");
 			
 			System.out.print( "\n **************************************************************"
 							+ "\n *"
@@ -299,7 +300,7 @@ public class Craps{
 			player.getPlayerName() + "! You lose this turn."
 			,"Sorry...",JOptionPane.WARNING_MESSAGE);
 			
-			System.out.println(player.getPlayerName() +" loses this turn.");
+			JOptionPane.showMessageDialog(null,player.getPlayerName() +" loses this turn.");
 			
 			System.out.print( "\n **************************************************************"
 							+ "\n *"
@@ -353,7 +354,7 @@ public class Craps{
 							+"\n88888888888888888888888888888888888888\n");
 		}else{
 			
-			System.out.println(player.getPlayerName() +" loses this turn.");
+			JOptionPane.showMessageDialog(null,player.getPlayerName() +" loses this turn.");
 			
 			System.out.print( "\n **************************************************************"
 							+ "\n *"
@@ -376,8 +377,8 @@ public class Craps{
 		processingRoll2 = Dice.roll();
 		processingSum = processingRoll1 + processingRoll2;
 		
-		System.out.println("You roll " + processingRoll1 + " and " + processingRoll2);
-		System.out.println("The sum of your dice is " + processingSum + "\n");
+		JOptionPane.showMessageDialog(null,"You roll " + processingRoll1 + " and " + processingRoll2);
+		JOptionPane.showMessageDialog(null,"The sum of your dice is " + processingSum + "\n");
 		
 		if(processingSum == yourPoint){
 			isWin(player1, player2, player, processingBet);
