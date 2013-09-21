@@ -7,26 +7,21 @@
  * Course: Introduction to Computer Science I (JAVA) 
  * Professor: Sana' Odeh
  * 
- *
- * October 10, 2009
  * 
- * The client class will have to do the following in the main method:
+ * The client class will perform the followings in the main method:
  * 
- * 	1.Instantiate or construct objects of type Binary;
- * 	2.Ask the user to enter a decimal number to pass to the Binary constructor;
- * 	3.Check to make sure that the decimal value is between 0 and 255;
- * 	4.Print an informative error message & store the 0 instead, if it's not.
+ * 	1.Construct objects of the Binary class;
+ * 	2.Ask users to enter a decimal number and pass it to the Binary class constructor;
+ * 	3.Make sure that the decimal value is between 0 and 255;
+ * 	4.Print an error message and return 0, if it is out of the range.
  * 
- * The Test Class is able to:
+ * The Verifier class is able to:
  * 
- * 	1.Make sure that the number is verified before it's printed by
- * 	  invoking another instance method of the Binary class;
- * 	2.Print the decimal number & its equivalent binary.
- * 	
+ * 	1.Convert a binary number into a decimal number
+ * 
  * A third method in the implementation class:
  * 
- * 1.Convert the decimal number to a hexadecimal number;
- * 2.Return it to the the client class.
+ *  1.Convert the decimal number into a hexadecimal number;
  *
  *******************************************************************************/
 
@@ -34,7 +29,6 @@
 
 
 import java.util.Scanner;
-import javax.swing.*;
 
 
 /******************************************************************
@@ -49,14 +43,21 @@ import javax.swing.*;
 
 public class Client{
 	public static void main(String[] args){
+		int inputDecimal = inputDecimal();
+		Converter converter = new Converter(inputDecimal);
+		
 		//convert decimal to binary
-		Binary biNum1 = new Binary(inputDecimal());
-		System.out.println(biNum1.outputBinary());
+		String binaryString = converter.outputBinary();
+		System.out.println("The binary represenation of decimal" + inputDecimal + " is " + binaryString);
+		
 		//verify the binary
-		Test test1 = new Test();
-		System.out.println(test1.outputVerification(biNum1.outputBinary()));
+		Verifier verifier1 = new Verifier();
+		boolean isVerified = verifier1.outputVerification(binaryString, inputDecimal);
+		if(isVerified)
+			System.out.println("Binary number " + binaryString + " can be converted back the original decimal number " + inputDecimal);
+		
 		//convert the decimal to hexadecimal
-		System.out.println(biNum1.decimalToHexadecimal(biNum1.outputBinary()));
+		System.out.println("The hexadecimal represenation of decimal" + inputDecimal + " is " + converter.decimalToHexadecimal());
 	}
 	
 	
@@ -102,14 +103,10 @@ public class Client{
 
 
 
-
-
-
-class Binary{
+class Converter{
 	
 	private int decimalNumber = 0;
 	private int dividend = 128;
-	private int remainder = 0;
 	private int outputDecimal = 0;
 	private int binaryDigit = 0;
 	
@@ -119,18 +116,18 @@ class Binary{
 	private String secondDigit = "";
 	private String outputHexadecimal = "";
 
-	public Binary(int decNum){
+	public Converter(int decNum){
 		decimalNumber = decNum;
 	}
 	
 	
 	
-	String decimalToHexadecimal(String inputBinary){
-		
+	String decimalToHexadecimal(){
+		String inputBinary = outputBinary();
 		firstDigit = inputBinary.substring(4);		
 		secondDigit = inputBinary.substring(0,4);
 		
-		outputHexadecimal = decimalNumber + ": " + computeDecimal(secondDigit)
+		outputHexadecimal = computeDecimal(secondDigit)
 		+ computeDecimal(firstDigit);
 		return outputHexadecimal;
 	}
@@ -208,20 +205,20 @@ class Binary{
  ******************************************************************/
 
 
-class Test{
+class Verifier{
 	
 	private int outputDecimal = 0;
 	private int binaryDigit = 0;
 	
 	
-	String outputVerification(String binaryToBeVerified){
+	boolean outputVerification(String binaryToBeVerified, int inputDecimal){
 		//Verify the binary by converting it back to decimal
     	outputDecimal = 0;
-    	for(int i = 0; i <=7; i++){
+    	for(int i = 0; i <=7; i++){//the binary number is always 8 digits
     		//Convert the char into integer
     		binaryDigit = (int)(binaryToBeVerified.charAt(7-i)-'0');
     		outputDecimal += binaryDigit * (int)Math.pow(2,i);
     	}
-    	return outputDecimal + ": " + binaryToBeVerified;
-	}
+    	return (outputDecimal==inputDecimal);
+   	}
 }
