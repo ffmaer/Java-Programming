@@ -39,18 +39,19 @@ import java.util.Scanner;
 
 public class Client{
 	public static void main(String[] args){
-		int input = inputDecimal();
-		Binary biNum1 = new Binary(input);
+		int inputDecimal = inputDecimal();
+		
+		//convert decimal to binary
+		Binary biNum1 = new Binary(inputDecimal);
 		String binaryString = biNum1.outputBinary();
 		System.out.println("The binary represenation is: " + binaryString);
+		
+		//verify the binary
 		Verifier verifier1 = new Verifier();
-		int decimalInt = verifier1.outputVerification(binaryString);
-		if(input == decimalInt){
-			System.out.println("Binary number " + binaryString + " can be converted back the original decimal number " + decimalInt);
-		}
-		else{
-			System.out.println("There are some mistakes happened.");
-		}
+		int outputDecimal = verifier1.outputVerification(binaryString);
+		if(outputDecimal == inputDecimal)
+			System.out.println("Binary number " + binaryString + " can be converted back the original decimal number " + inputDecimal);
+
 	}
 	
 	
