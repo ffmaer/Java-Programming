@@ -7,21 +7,11 @@
  * Course: Introduction to Computer Science I (JAVA) 
  * Professor: Sana' Odeh
  * 
- * 
- * The client class will perform the followings in the main method:
- * 
- * 	1.Construct objects of the Binary class;
- * 	2.Ask users to enter a decimal number and pass it to the Binary class constructor;
- * 	3.Make sure that the decimal value is between 0 and 255;
- * 	4.Print an error message and return 0, if it is out of the range.
- * 
- * The Verifier class is able to:
- * 
- * 	1.Convert a binary number into a decimal number
- * 
- * A third method in the implementation class:
- * 
- *  1.Convert the decimal number into a hexadecimal number;
+ * This program will
+ * 1. check to make sure that the decimal input is between 0 and 255
+ * 2. print an error message and assume the input is 0 if the input is out of range
+ * 3. convert a decimal number into a binary number and a hexadecimal number
+ * 4. convert the binary number back to a decimal number in order to verify
  *
  *******************************************************************************/
 
