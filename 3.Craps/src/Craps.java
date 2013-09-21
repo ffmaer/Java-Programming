@@ -5,34 +5,21 @@ Course: Introduction to Computer Science I (JAVA)
 Professor: Sana' Odeh
 October 18, 2009
 
-Craps
+New Craps
 
-Brief instructions:
-
-How to play the Craps?
-
-	Two players take turns and one player plays each time.
-	Before you roll, you bet on your outcome.
-	If you win, your bet will be added to your balance.
-	If you lose, your bet will be detracted from your balance.
-	In two situations, the game ends.
-	If one player reaches the predetermined goal 300 dollars
-	or one player runs out of money, the game will end.
-	The one who reaches the goal first will be the champion and 
-	one will be the champion too when the other runs out of money
-	You roll two dice each time and the sum ranges from 2 to 12.
-	In the first roll,
-	you win, if you get 7 or 11;
-	you lose, if you get 2 or 12.
-	If you get the other number, the number will be YOUR NUMBER.
-	You need to keep rolling until
-	you win, if you get YOUR NUMBER again;
-	you lose, if you get 7.
-	The game will continue until the champion appears.
-
+How to play the New Craps?
+Two players take turns. You start with a balance of 100 dollars.
+You roll two dice each time and the sum ranges from 2 to 12.
+Before you roll, you bet. In the first roll, if you get 7 or 11, you win;
+if you get 2 or 12, you lose. If you get any other numbers,
+you need to keep rolling until you get the previous sum again,
+in which case you win or you get 7, in which case you lose.
+Under two scenarios, the game ends.
+(1) One player reaches the goal of 300 dollars
+and (2) One player runs out of money.
  ***************************************************************************
 
-Some comments regarding extra credits.
+Some comments.
 
 1. Use "try & catch" to avoid the player put in some bets which are not
 	numeric string.
@@ -90,26 +77,17 @@ public class Craps {
 				.showMessageDialog(
 						null,
 						"\n ***************************************************************"
-								+ "\n ***********************INSTRUCTIONS****************************"
+								+ "\n ***********************INSTRUCTIONS************************"
 								+ "\n ***************************************************************"
-								+ "\n ** Two players take turns and one player plays each time."
-								+ "\n ** Before you roll, you bet on your outcome."
-								+ "\n ** If you win, your bet will be added to your balance."
-								+ "\n ** If you lose, your bet will be detracted from your balance."
-								+ "\n ** In two situations, the game ends."
-								+ "\n ** If one player reaches the pre-determined goal 300 dollars"
-								+ "\n ** or one player runs out of money, the game will end."
-								+ "\n ** The one who reaches the goal first will be the champion and "
-								+ "\n ** one will be the champion too when the other runs out of money"
-								+ "\n ** You roll two dice each time and the sum ranges from 2 to 12."
-								+ "\n ** In the first roll,"
-								+ "\n ** you win, if you get 7 or 11;"
-								+ "\n ** you lose, if you get 2 or 12."
-								+ "\n ** If you get the other number, the number will be YOUR NUMBER."
-								+ "\n ** You need to keep rolling until"
-								+ "\n ** you win, if you get YOUR NUMBER again;"
-								+ "\n ** you lose, if you get 7."
-								+ "\n ** The game will continue until the champion appears."
+								+ "\n Two players take turns. You start with a balance of 100 dollars."
+								+ "\n You roll two dice each time and the sum ranges from 2 to 12."
+								+ "\n Before you roll, you bet. In the first roll, if you get 7 or 11, you win;"
+								+ "\n if you get 2 or 12, you lose. If you get any other numbers,"
+								+ "\n you need to keep rolling until you get the previous sum again,"
+								+ "\n in which case you win or you get 7, in which case you lose."
+								+ "\n Under two scenarios, the game ends."
+								+ "\n (1) One player reaches the goal of 300 dollars"
+								+ "\n and (2) One player runs out of money."
 								+ "\n ***************************************************************"
 								+ "\n ***************************************************************\n");
 
