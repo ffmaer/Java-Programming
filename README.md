@@ -1,4 +1,4 @@
-Java-Programming
+Java Programming
 ================
 
 Program 1
@@ -19,4 +19,4 @@ The binary represenation of decimal255 is 11111111
 
 Binary number 11111111 can be converted back the original decimal number 255
 
-The hexadecimal represenation of decimal255 is FF
+The hexadecimal represenation of decimal 255 is FF
