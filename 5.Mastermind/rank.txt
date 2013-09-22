@@ -1,0 +1,10 @@
+360:WinC:Sana:Odeh
+350:Maer:Tengchao:Zhou
+340:Buddy1:Wan:Huh
+330:Buddy2:Eric:Chen
+320:Kitcat:Dennis:Shasha
+310:TA:Kai:Chen
+300:Advisor:Romeo:Kumar
+290:Roommate1:Francis:Poon
+280:Roommate2:Cody:Merrit
+270:Crew:Sam:Wu
