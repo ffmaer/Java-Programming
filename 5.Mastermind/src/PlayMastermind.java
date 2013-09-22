@@ -56,26 +56,13 @@ public class PlayMastermind {
 				JOptionPane
 						.showMessageDialog(
 								null,
-								"Mastermind Rules:"
-										+ "\n*One player takes turns trying to break a preset code"
-										+ "\n*There are 2 types of pegs: code pegs and key pegs"
-										+ "\n*Code pegs are larger and come in 6 colors: red, green, blue, yellow, black, and cyan"
-										+ "\n*Key pegs are smaller and come in 2 colors: black and gray"
-										+ "\n*The game is played on a board consisting of 12 rows of four holes each"
-										+ "\n*The game begins with a preset pattern of 4 colored code pegs"
-										+ "\n*Duplicate colors are allowed and the pattern is unknown"
-										+ "\n*The player must attempt to guess the exact pattern of the code in both color and order"
-										+ "\n*After each guess key pegs are placed next to each row to provide feedback on the code breaker's guess"
-										+ "\n*A black key peg is placed to indicate that a code peg is both of the right color and in the right spot"
-										+ "\n*A gray key peg is placed to indicate a code peg of the right color in the wrong spot"
-										+ "\n*No key peg is placed for any code peg that is both of the wrong color and the wrong spot"
-										+ "\n*A turn ends when either of the following conditions is true:"
-										+ "\n*  -The player correctly matches preset code, or"
-										+ "\n*  -The player does not match the code within 12 tries"
-										+ "\n*The player begins with 360 points"
-										+ "\n*For each guess the player makes 10 points are deducted from the score"
-										+ "\n*The game is played for 2 sets"
-										+ "\n*High scores are attained by using as few guesses as possible");
+								"Mastermind Rules: Mastermind is a single player game. The goal is to break a code. "
+										+ "\nThe code is made of four big code-pegs. Each code-peg can have either of the 6 colors. "
+										+ "\nEach turn you make a guess about the code. 4 small key-pegs are used to indicate the "
+										+ "\ncorrectness of your guess. A black key-peg indicates that a code-peg has both right color "
+										+ "\nand right spot. A gray key-peg indicates that a code-peg has the right color but wrong spot. "
+										+ "\nYou win if you break the code within 12 attempts. The player begins with 360 points. "
+										+ "\n10 points are deducted for each guess. Use as few guesses as possible to achieve high scores.");
 				menu();
 			} else if (userChoice.equals(menuDropdown[2])) {
 				playerFirstName = JOptionPane.showInputDialog(null,
