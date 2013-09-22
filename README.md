@@ -47,4 +47,5 @@ Mastermind is a single player game. The goal is to break a code. The code is mad
 The game ends when either of the following conditions is true:
 * The player correctly matches preset code, or
 * The player does not match the code within 12 tries
+
 The player begins with 360 points. 10 points are deducted for each guess. Use as few guesses as possible to achieve high scores.
