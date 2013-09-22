@@ -39,3 +39,12 @@ The universe of the Game of Life is an infinite two-dimensional orthogonal grid 
 * Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
 
 The initial pattern constitutes the seed of the system. The first generation is created by applying the above rules simultaneously to every cell in the seed—births and deaths occur simultaneously, and the discrete moment at which this happens is sometimes called a tick (in other words, each generation is a pure function of the preceding one). The rules continue to be applied repeatedly to create further generations.
+
+Program 4
+-------------------------
+Mastermind is a single player game. The goal is to break a code. The code is made of four big code-pegs. Each code-peg can have either of the 6 colors. Each turn you make a guess about the code. 4 small key-pegs are used to indicate the correctness of your guess. A black key-peg indicates that a code-peg has both right color and right spot. A gray key-peg indicates that a code-peg has the right color but wrong spot.
+
+The game ends when either of the following conditions is true:
+* The player correctly matches preset code, or
+* The player does not match the code within 12 tries
+The player begins with 360 points. 10 points are deducted for each guess. Use as few guesses as possible to achieve high scores.
