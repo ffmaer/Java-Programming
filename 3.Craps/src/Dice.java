@@ -26,7 +26,13 @@ public class Dice{
 	 
 	private static int playerGoal; 
 	
+	//other variables used to store processing values
 	
+	private static String playerBetString;
+	private static int playerBetInteger;
+	private static int playerDiceNumber;
+	
+	private static int choice;
 	
 	//We will access these private fields outside the class, so I will set up the "setField" and the "getField".
 	
@@ -47,13 +53,7 @@ public class Dice{
 	void setPlayerBalance(int balance){
 		playerBalance = balance;
 	}	
-	
-	//other variables used to store processing values
-	
-	private static String playerBetString;
-	private static int playerBetInteger;
-	private static int playerDiceNumber;
-	
+
 	//set up the constructor for the Dice
 	
 	//just in case no initialization for the dice, thought it won't happen in this program
@@ -92,22 +92,29 @@ public class Dice{
 			playerBetString = JOptionPane.showInputDialog(null,
 			"How much do you want to bet, " + playerName + " ?",
 			"Wow!", JOptionPane.QUESTION_MESSAGE);
-			
+			if(playerBetString == null) {
+				System.exit(0); // quit the game
+			}
+			System.out.println(playerBetString);
 			//convert the numeric string to integer
 			playerBetInteger = Integer.parseInt(playerBetString);
 		}catch(Exception e){
-			JOptionPane.showMessageDialog(null,
+			System.out.println(e);
+			choice = JOptionPane.showConfirmDialog(null,
 			"Dear " + playerName + "! Your bet should be a number. Can you put in your bet again?"
-			,"Oooops", JOptionPane.WARNING_MESSAGE);
+			, "Oooops", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
+			
 			bet();
 		}
 		
 		if(isValidBet(playerBetInteger)){
 			return playerBetInteger;
 		}else{
-			JOptionPane.showMessageDialog(null,
-			"Hey " + playerName + "! Your bet should be more than 0 dollar and less than " + playerBalance +" dollars."
-			,"Ooooooops...", JOptionPane.WARNING_MESSAGE);
+			choice = JOptionPane.showConfirmDialog(null,
+			"Hey " + playerName + "! Your bet should be more than 0 dollar and less than " + (playerBalance + 1)  +" dollars."
+			,"Ooooooops...", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
 			
 			return bet();
 		}

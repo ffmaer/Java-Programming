@@ -68,15 +68,16 @@ public class Craps {
 	private static int playerOrder = 1;
 
 	private static int processingBet;
+	
+	private static int choice;
 
 	public static void main(String[] args) {
 
 		// As a norm, we need to read instruction before playing the game.
 
-		JOptionPane
-				.showMessageDialog(
+		choice = JOptionPane.showConfirmDialog(
 						null,
-						"\n ***************************************************************"
+								  "\n ***************************************************************"
 								+ "\n ***********************INSTRUCTIONS************************"
 								+ "\n ***************************************************************"
 								+ "\n Two players take turns. You start with a balance of 100 dollars."
@@ -89,19 +90,25 @@ public class Craps {
 								+ "\n (1) One player reaches the goal of 300 dollars"
 								+ "\n and (2) One player runs out of money."
 								+ "\n ***************************************************************"
-								+ "\n ***************************************************************\n");
-
-		JOptionPane.showMessageDialog(null, "Can we start the game now?",
-				"Are you ready?", JOptionPane.QUESTION_MESSAGE);
+								+ "\n ***************************************************************\n", "INSTRUCTIONS", JOptionPane.DEFAULT_OPTION );
+		if(choice == -1) System.exit(0);
+		
+		choice = JOptionPane.showConfirmDialog(null, "Can we start the game now?",
+				"Are you ready?", JOptionPane.DEFAULT_OPTION );
+		if(choice == -1) System.exit(0);
 
 		// ask the players to enter their names
 		firstPlayerName = JOptionPane.showInputDialog(null,
 				"You will be the 1st player. What's your name?", "Name?",
 				JOptionPane.QUESTION_MESSAGE);
-
+		if(firstPlayerName == null) System.exit(0);
+		if(firstPlayerName.isEmpty()) firstPlayerName = "Player1";
+		
 		secondPlayerName = JOptionPane.showInputDialog(null,
 				"You will be the 2nd player. What's your name?", "Name?",
 				JOptionPane.QUESTION_MESSAGE);
+		if(secondPlayerName == null) System.exit(0);
+		if(secondPlayerName.isEmpty()) secondPlayerName = "Player2";
 
 		// now we can use the constructor to create two dice
 		Dice dice1 = new Dice(firstPlayerName, 100, theGoal); // construct dice1 instance
@@ -130,21 +137,26 @@ public class Craps {
 
 	private static void firstTurn(Dice player1, Dice player2, Dice player) {
 
-		JOptionPane.showMessageDialog(null, "This is " + player.getPlayerName()
-				+ "'s turn. Your balance is " + player.getPlayerBalance());
+		choice = JOptionPane.showConfirmDialog(null, "This is " + player.getPlayerName()
+				+ "'s turn. Your balance is " + player.getPlayerBalance(), "INFO", JOptionPane.DEFAULT_OPTION);
+		if(choice == -1) System.exit(0);
 		processingBet = player.bet();
 
-		JOptionPane.showMessageDialog(null, "Let's see the number...",
-				"Good luck!", JOptionPane.WARNING_MESSAGE);
+		choice = JOptionPane.showConfirmDialog(null, "Let's see the number...",
+				"Good luck!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+		if(choice == -1) System.exit(0);
 
 		processingRoll1 = Dice.roll();
 		processingRoll2 = Dice.roll();
 		processingSum = processingRoll1 + processingRoll2;
 
-		JOptionPane.showMessageDialog(null, "You roll " + processingRoll1
-				+ " and " + processingRoll2);
-		JOptionPane.showMessageDialog(null, "The sum of your dice is "
-				+ processingSum + "\n");
+		choice = JOptionPane.showConfirmDialog(null, "You roll " + processingRoll1
+				+ " and " + processingRoll2, "INFO", JOptionPane.DEFAULT_OPTION);
+		if(choice == -1) System.exit(0);
+
+		choice = JOptionPane.showConfirmDialog(null, "The sum of your dice is "
+				+ processingSum + "\n", "INFO", JOptionPane.DEFAULT_OPTION);
+		if(choice == -1) System.exit(0);
 
 		if (processingSum == 7 || processingSum == 11) {
 			isWin(player1, player2, player, processingBet);
@@ -152,8 +164,10 @@ public class Craps {
 			isLose(player1, player2, player, processingBet);
 		} else {
 
-			JOptionPane.showMessageDialog(null,
-					"In order to win, you should roll " + processingSum);
+			choice = JOptionPane.showConfirmDialog(null,
+					"In order to win, you should roll " + processingSum, "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
+
 			nextTurn(player1, player2, player, processingSum);
 		}
 	}
@@ -164,12 +178,13 @@ public class Craps {
 
 		if (player.getPlayerBalance() >= Dice.getPlayerGoal()) {
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ " wins this turn.");
-			JOptionPane
-					.showMessageDialog(
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ " wins this turn.", "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
+
+			choice = JOptionPane.showConfirmDialog(
 							null,
-							"\n **************************************************************"
+									  "\n **************************************************************"
 									+ "\n *"
 									+ "\n * "
 									+ player.getPlayerName()
@@ -182,27 +197,33 @@ public class Craps {
 									+ player.getPlayerBalance()
 									+ " dollars"
 									+ "\n *"
-									+ "\n **************************************************************\n");
+									+ "\n **************************************************************\n", 
+									"INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ "! You are the champion!", "Congratulations!",
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ "! You are the champion!", "Congratulations!", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null,
-					dollarASCII(player.getPlayerName()));
+			choice = JOptionPane.showConfirmDialog(null,
+					dollarASCII(player.getPlayerName()), "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
+
 		} else {
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ "! You wins this turn!", "Congratulations!",
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ "! You wins this turn!", "Congratulations!", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ " wins this turn.");
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ " wins this turn.", "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane
-					.showMessageDialog(
+			choice = JOptionPane.showConfirmDialog(
 							null,
-							"\n **************************************************************"
+									  "\n **************************************************************"
 									+ "\n *"
 									+ "\n * "
 									+ player.getPlayerName()
@@ -215,7 +236,9 @@ public class Craps {
 									+ player.getPlayerBalance()
 									+ " dollars"
 									+ "\n *"
-									+ "\n **************************************************************\n");
+									+ "\n **************************************************************\n", 
+									"INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
 			firstTurn(player1, player2, referee(player1, player2));
 		}
@@ -228,17 +251,18 @@ public class Craps {
 
 		if (player.getPlayerBalance() <= 0) {
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ "! You lose this turn.", "Sorry...",
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ "! You lose this turn.", "Sorry...", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ " loses this turn.");
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ " loses this turn.", "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane
-					.showMessageDialog(
+			choice = JOptionPane.showConfirmDialog(
 							null,
-							"\n **************************************************************"
+									  "\n **************************************************************"
 									+ "\n *"
 									+ "\n * "
 									+ player.getPlayerName()
@@ -251,23 +275,27 @@ public class Craps {
 									+ player.getPlayerBalance()
 									+ " dollars"
 									+ "\n *"
-									+ "\n **************************************************************\n");
+									+ "\n **************************************************************\n", 
+									"INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ "! Your game is over.", "Sorry...",
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ "! Your game is over.", "Sorry...", JOptionPane.DEFAULT_OPTION,
 					JOptionPane.WARNING_MESSAGE);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane.showMessageDialog(null,
-					dollarASCII(referee(player1, player2).getPlayerName()));
+			choice = JOptionPane.showConfirmDialog(null,
+					dollarASCII(referee(player1, player2).getPlayerName()), "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 		} else {
 
-			JOptionPane.showMessageDialog(null, player.getPlayerName()
-					+ " loses this turn.");
+			choice = JOptionPane.showConfirmDialog(null, player.getPlayerName()
+					+ " loses this turn.", "INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
-			JOptionPane
-					.showMessageDialog(
+			choice = JOptionPane.showConfirmDialog(
 							null,
-							"\n **************************************************************"
+									  "\n **************************************************************"
 									+ "\n *"
 									+ "\n * "
 									+ player.getPlayerName()
@@ -280,7 +308,9 @@ public class Craps {
 									+ player.getPlayerBalance()
 									+ " dollars"
 									+ "\n *"
-									+ "\n **************************************************************\n");
+									+ "\n **************************************************************\n", 
+									"INFO", JOptionPane.DEFAULT_OPTION);
+			if(choice == -1) System.exit(0);
 
 			firstTurn(player1, player2, referee(player1, player2));
 		}
@@ -290,17 +320,21 @@ public class Craps {
 	private static void nextTurn(Dice player1, Dice player2, Dice player,
 			int yourPoint) {
 
-		JOptionPane.showMessageDialog(null, "Let's see the number...",
-				"Good luck!", JOptionPane.WARNING_MESSAGE);
+		choice = JOptionPane.showConfirmDialog(null, "Let's see the number...",
+				"Good luck!", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE);
+		if(choice == -1) System.exit(0);
 
 		processingRoll1 = Dice.roll();
 		processingRoll2 = Dice.roll();
 		processingSum = processingRoll1 + processingRoll2;
 
-		JOptionPane.showMessageDialog(null, "You roll " + processingRoll1
-				+ " and " + processingRoll2);
-		JOptionPane.showMessageDialog(null, "The sum of your dice is "
-				+ processingSum + "\n");
+		choice = JOptionPane.showConfirmDialog(null, "You roll " + processingRoll1
+				+ " and " + processingRoll2, "INFO", JOptionPane.DEFAULT_OPTION);
+		if(choice == -1) System.exit(0);
+
+		choice = JOptionPane.showConfirmDialog(null, "The sum of your dice is "
+				+ processingSum + "\n", "INFO", JOptionPane.DEFAULT_OPTION);
+		if(choice == -1) System.exit(0);
 
 		if (processingSum == yourPoint) {
 			isWin(player1, player2, player, processingBet);
