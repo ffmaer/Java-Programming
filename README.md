@@ -26,7 +26,7 @@ Craps is a dice game. Two players take turns. You start with a balance of 100 do
 
 * If you get 7 or 11, you win.
 * If you get 2 or 12, you lose.
-* If you get any other numbers, which we call X, you need to keep rolling. If you get X again, you win. If you get 7 in these subsequent rols, you lose.
+* If you get any other numbers, which we call X, you need to keep rolling. If you get X again, you win. If you hit 7 in these subsequent rolls, you lose.
 
 Under two scenarios, the game ends: 
 * One player reaches the goal of 300 dollars.
