@@ -20,8 +20,9 @@ The hexadecimal representation of decimal 255 is FF
 
 ## Program 3
 
-How to play the New Craps (a dice game)?
-Two players take turns. You start with a balance of 100 dollars. You roll two dice each time and the sum ranges from 2 to 12. Before you roll, you bet. 
+How to play Craps?
+
+Craps is a dice game. Two players take turns. You start with a balance of 100 dollars. You roll two dice each time and the sum ranges from 2 to 12. Before you roll, you bet. 
 
 * If you get 7 or 11, you win.
 * If you get 2 or 12, you lose.
@@ -48,7 +49,7 @@ Under two scenarios, the game ends:
 
 ## Program 5
 
-Mastermind is a single-player game. The goal is to break a code. The code is made of four big code-pegs. Each code-peg can have either of the 6 colors. Each turn you guess the code. 4 small key-pegs are used to indicate the correctness of your guess.
+Mastermind is a single-player code-breaking game. The goal is to break a code. The code is made of four big code-pegs. Each code-peg can have either of the 6 colors. Each turn you guess the code. 4 small key-pegs are used to indicate the correctness of your guess.
 
 A black key-peg indicates that a code-peg has both the right color and right spot.
 A gray key-peg indicates that a code-peg has the right color but the wrong spot.
