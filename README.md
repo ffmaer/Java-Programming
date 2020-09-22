@@ -25,7 +25,7 @@ Two players take turns. You start with a balance of 100 dollars. You roll two di
 
 * If you get 7 or 11, you win.
 * If you get 2 or 12, you lose.
-* If you get any other numbers, you need to keep rolling until you get the previous sum again, in which case you win or you get 7, in which case you lose.
+* If you get any other numbers, which we call X, you need to keep rolling. If you get X again, you win. If you get 7 in these subsequent rols, you lose.
 
 Under two scenarios, the game ends: 
 * One player reaches the goal of 300 dollars.
