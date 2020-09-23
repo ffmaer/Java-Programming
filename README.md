@@ -1,4 +1,4 @@
-# Java Programming
+# Java Programming with Sana Odeh Fall 2009
 
 ## Program 1
 
