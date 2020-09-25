@@ -20,6 +20,8 @@ The hexadecimal representation of decimal 255 is FF
 
 ## Program 3
 
+[video](https://youtu.be/4RYa8g1v3RQ)
+
 How to play Craps?
 
 Craps is a dice game. Two players take turns. You start with a balance of 100 dollars. You roll two dice each time and the sum ranges from 2 to 12. Before you roll, you bet. 
