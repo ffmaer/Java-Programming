@@ -36,6 +36,8 @@ Under two scenarios, the game ends:
 
 ## Program 4
 
+![](https://github.com/ffmaer/Java-Programming/raw/2020/4.Game-of-Life/images/big-bang.png?raw=true)
+
 >The Game of Life, also known simply as Life, is a cellular automaton devised by the British mathematician John Horton Conway in 1970. The "game" is a zero-player game, meaning that its evolution is determined by its initial state, requiring no further input. One interacts with the Game of Life by creating an initial configuration and observing how it evolves.
 
 >The universe of the Game of Life is an infinite two-dimensional orthogonal grid of square cells, each of which is in one of two possible states, alive or dead. Every cell interacts with its eight neighbours, which are the cells that are horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
@@ -50,6 +52,8 @@ Under two scenarios, the game ends:
 >- https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
 ## Program 5
+
+Developed by Eric Chen, Wan Huh and Tengchao Zhou (ordered by the initials of their last names).
 
 Mastermind is a single-player code-breaking game. The goal is to break a code. The code is made of four big code-pegs. Each code-peg can have either of the 6 colors. Each turn you guess the code. 4 small key-pegs are used to indicate the correctness of your guess.
 
