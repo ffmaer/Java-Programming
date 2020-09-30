@@ -5,7 +5,7 @@
  * V22.0101-003
  * 
  * Course: Introduction to Computer Science I (JAVA) 
- * Professor: Sana' Odeh
+ * Professor: Sana Odeh
  * 
  *
  * November 7, 2009
@@ -14,22 +14,26 @@
  * 
  *******************************************************************************/
 
-import java.io.*;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /******************************************************************
  * * * The Life Class * * *
  ******************************************************************/
 
+@SuppressWarnings("serial")
 public class Life extends JFrame {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	static int iteration = 0;
 
@@ -41,9 +45,9 @@ public class Life extends JFrame {
 	static final int M = 25; // rows
 	static final int N = 75; // columns
 
+	// we have two arrays, because then you can create a new generation based on the previous generation
 	static char array1[][] = new char[M + 2][N + 2];//+2 for better handling edge cases
 	static char array2[][] = new char[M + 2][N + 2];
-	
 	
 	public Life() {
 
@@ -83,9 +87,9 @@ public class Life extends JFrame {
 		 * is posted directly under the link for this assignment)which has the
 		 * string indicating the file you are reading as the parameter of the
 		 * constructor.Thus to read the first file you would have
-		 * FileStringReader kbd = new FileStringReader( "file1.dat");;and then
+		 * FileStringReader kbd = new FileStringReader( "file1.txt");;and then
 		 * String line = kbd.readLine() to read a string.Of course, in your
-		 * program you would have a string variable representing "file1.dat"
+		 * program you would have a string variable representing "file1.txt"
 		 * whose value you type as input to your program .
 		 */
 
@@ -96,14 +100,14 @@ public class Life extends JFrame {
 		 * final statement before declaring your array variables.
 		 */
 
-		// choose which game do the player want to play
+		// choose the game that the player wants to play
 		int filenum = fileNumber();
 
-		FileStringReader kbd = new FileStringReader("life" + filenum + ".dat");
+		FileStringReader kbd = new FileStringReader("life" + filenum + ".txt");
 
 		String line;
 
-		// put the dat file into array
+		// put the .txt file into array
 		for (int i = 1; i <= M; i++) {
 			line = kbd.readLine();
 			for (int j = 1; j <= N; j++) {
@@ -117,14 +121,14 @@ public class Life extends JFrame {
 
 			}
 		}
-		printAll();
+		displayPattern();
 	}
 
 	/*
 	 * Include at least two non-void methods.One should take a world and the
 	 * coordinates of a cell and return the number of neighbors(organisms in
 	 * neighboring cells) that the cell has.The other should take a generation
-	 * array and return a Boolean value thattells whether or not the world
+	 * array and return a Boolean value that tells whether or not the world
 	 * represented by the array is empty.
 	 */
 	public static int fileNumber() {
@@ -145,10 +149,10 @@ public class Life extends JFrame {
 		}
 	}
 
-	public static void printAll() {
+	public static void displayPattern() {
 		String tempOutLine = "";
 
-		if (isEmpty()) {
+		if (isTotallyEmpty()) {
 			jlblIteration.setText("Game Over");
 		} else {
 			iteration++;
@@ -163,24 +167,27 @@ public class Life extends JFrame {
 
 	static void nextGen() {
 
+		// store current pattern
 		for (int i = 1; i <= M; i++) {
 			for (int j = 1; j <= N; j++) {
 				array2[i][j] = array1[i][j];
 				array1[i][j] = ' ';
 			}
 		}
+		
+		// create next generation of pattern
 		for (int i = 1; i <= M; i++) {
 			for (int j = 1; j <= N; j++) {
-				if (numNei(i, j) == 3) {
+				if (neighbor(i, j) == 3) { // if it has three neighbors
 					array1[i][j] = 'X';
-				} else if (array2[i][j] == 'X' && numNei(i, j) == 2) {
+				} else if (array2[i][j] == 'X' && neighbor(i, j) == 2) { // if it has two neighbors, and an X already exists at i,j
 					array1[i][j] = 'X';
 				}
 			}
 		}
 	}
 
-	static int numNei(int i, int j) {
+	static int neighbor(int i, int j) {
 		int neighborCounter = 0;
 		if (array2[i - 1][j - 1] == 'X') {
 			neighborCounter++;
@@ -209,7 +216,7 @@ public class Life extends JFrame {
 		return neighborCounter;
 	}
 
-	static Boolean isEmpty() {
+	static Boolean isTotallyEmpty() { // no life is left, a very sad situation
 		for (int i = 1; i <= M; i++) {
 			for (int j = 1; j <= N; j++) {
 				if (array2[i][j] == 'X') {
@@ -222,22 +229,22 @@ public class Life extends JFrame {
 
 	private class OKListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			printAll();
+			displayPattern();
 		}
 	}
 
 	private class SaveListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent ae) {
 			try {
-				PrintWriter output = new PrintWriter("life0.dat");
+				PrintWriter output = new PrintWriter("life0.txt");
 				for (int i = 1; i <= M; i++) {
 					output.println(String.copyValueOf(array1[i]).replaceAll(
 							" ", "."));
 				}
-
 				output.close();
-			} catch (FileNotFoundException ex) {
-				System.out.println("File  does not exist");
+			} catch (IOException e) {
+				System.out.println("An error occurred.");
+				e.printStackTrace();
 			}
 		}
 	}
