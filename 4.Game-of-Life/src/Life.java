@@ -15,12 +15,14 @@
  *******************************************************************************/
 
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -37,10 +39,12 @@ public class Life extends JFrame {
 
 	static int iteration = 0;
 
-	static JLabel jlblIteration = new JLabel("Iteration: " + iteration);
-	static JTextArea jtaDisplay = new JTextArea("");
-	static JButton jbtOK = new JButton("Next Generation");
-	static JButton jbtSave = new JButton("Save The Pattern");
+	static JLabel iterationText = new JLabel("Iteration: " + iteration);
+	static JTextPane mainDisplay = new JTextPane();
+	static StyledJButton nextGenButton = new StyledJButton("Next Generation");
+	static StyledJButton saveButton = new StyledJButton("Save The Pattern");
+	static StyledJButton restartButton = new StyledJButton("Restart");
+	static JLabel message = new JLabel("");
 	
 	static final int M = 25; // rows
 	static final int N = 75; // columns
@@ -51,30 +55,68 @@ public class Life extends JFrame {
 	
 	public Life() {
 
-		jtaDisplay.setFont(new Font("Lucida Console", Font.PLAIN, 14));
-		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20));
-		add(jlblIteration);
-		add(jtaDisplay);
-		add(jbtOK);
-		add(jbtSave);
-
-		ActionListener listener = new OKListener();
-		jbtOK.addActionListener(listener);
-		ActionListener listener1 = new SaveListener();
-		jbtSave.addActionListener(listener1);
-		
 		setTitle("The Game of Life");
 		setSize(800, 600);
+		setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
+		this.getContentPane().setBackground( Color.BLACK );
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		
+		mainDisplay.setFont(new Font("Lucida Console", Font.PLAIN, 14));
+		mainDisplay.setBackground(Color.BLACK);
+		mainDisplay.setForeground(Color.GREEN);
+		add(mainDisplay);
+		
+		iterationText.setForeground(Color.GREEN);
+		add(iterationText);
+		
+		nextGenButton.addActionListener(new NextGenListener());
+		add(nextGenButton);
+
+		saveButton.addActionListener(new SaveListener());
+		add(saveButton);
+		
+		restartButton.addActionListener(new RestartListener());
+		add(restartButton);
+		
+		message.setForeground(Color.GREEN);
+		message.setText("");
+		add(message);
+		
 	}
 
+	
+	private static void startGame() {
+		
+		iteration = 0; // reset
+		
+		// choose the game that the player wants to play
+		int filenum = selectGame();
 
+		FileStringReader kbd = new FileStringReader("life" + filenum + ".txt");
+
+		String line;
+
+		// put the .txt file into array
+		for (int i = 1; i <= M; i++) {
+			line = kbd.readLine();
+			for (int j = 1; j <= N; j++) {
+				if (line.charAt(j - 1) == 'X') {
+					array1[i][j] = 'X';
+					array2[i][j] = 'X';
+				} else {
+					array1[i][j] = ' ';
+					array2[i][j] = ' ';
+				}
+
+			}
+		}
+		
+		displayPattern();
+	}
 
 	public static void main(String[] args) {
-		new Life();
-
 
 		/*
 		 * Empty cells are represented by dots and occupied cells with X's. Read
@@ -100,28 +142,11 @@ public class Life extends JFrame {
 		 * final statement before declaring your array variables.
 		 */
 
-		// choose the game that the player wants to play
-		int filenum = fileNumber();
+		startGame();
+		
+		new Life();
 
-		FileStringReader kbd = new FileStringReader("life" + filenum + ".txt");
-
-		String line;
-
-		// put the .txt file into array
-		for (int i = 1; i <= M; i++) {
-			line = kbd.readLine();
-			for (int j = 1; j <= N; j++) {
-				if (line.charAt(j - 1) == 'X') {
-					array1[i][j] = 'X';
-					array2[i][j] = 'X';
-				} else {
-					array1[i][j] = ' ';
-					array2[i][j] = ' ';
-				}
-
-			}
-		}
-		displayPattern();
+		
 	}
 
 	/*
@@ -131,36 +156,42 @@ public class Life extends JFrame {
 	 * array and return a Boolean value that tells whether or not the world
 	 * represented by the array is empty.
 	 */
-	public static int fileNumber() {
-		int filenum = 1;
+	public static int selectGame() {
+		int filenum = -1;
 		try {
-			filenum = Integer
-					.parseInt(JOptionPane
-							.showInputDialog(
-									null,
-									"Which game do you want to play?\nEnter a number from 0 to 6.\nPlease try 6, which is designed by me.\n0 means the game saved last time."));
+			String str = JOptionPane
+			.showInputDialog(
+					null,
+					"Which game do you want to play?\n"
+					+ "Enter a number from 0 to 6.\n"
+					+ "Please try 6, which is designed by me.\n"
+					+ "0 means the game saved last time.");
+						
+			if(str == null) System.exit(0);
+							
+			filenum = Integer.parseInt(str);
 		} catch (Exception ex) {
-			return fileNumber();
+			return selectGame();
 		}
 		if (filenum > 6 || filenum < 0) {
-			return fileNumber();
+			return selectGame();
 		} else {
 			return filenum;
 		}
 	}
 
 	public static void displayPattern() {
-		String tempOutLine = "";
+		String displayOutput = "";
 
 		if (isTotallyEmpty()) {
-			jlblIteration.setText("Game Over");
+			iterationText.setText("Game Over");
 		} else {
 			iteration++;
-			jlblIteration.setText("Iteration: " + iteration);
+			iterationText.setText("Iteration: " + iteration);
 			for (int i = 0; i <= M + 1; i++) {
-				tempOutLine += (String.copyValueOf(array1[i]) + "\n");
+				displayOutput += (String.copyValueOf(array1[i]) + "\n");
 			}
-			jtaDisplay.setText(tempOutLine);
+			mainDisplay.setText(displayOutput);
 			nextGen();
 		}
 	}
@@ -227,8 +258,15 @@ public class Life extends JFrame {
 		return true;
 	}
 
-	private class OKListener implements ActionListener {
+	private class RestartListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			startGame();
+		}
+	}
+	
+	private class NextGenListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			message.setText("");
 			displayPattern();
 		}
 	}
@@ -242,6 +280,8 @@ public class Life extends JFrame {
 							" ", "."));
 				}
 				output.close();
+				String status = "Saved to life0.txt";
+				message.setText(status);
 			} catch (IOException e) {
 				System.out.println("An error occurred.");
 				e.printStackTrace();
