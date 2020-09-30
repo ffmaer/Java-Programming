@@ -63,3 +63,5 @@ A black key-peg indicates that a code-peg has both the right color and right spo
 A gray key-peg indicates that a code-peg has the right color but the wrong spot.
 
 You win if you break the code within 12 attempts. The player begins with 360 points. 10 points are deducted for each guess. Use as few guesses as possible to achieve high scores.
+
+[video](https://youtu.be/PaYEeUcSEx4)
