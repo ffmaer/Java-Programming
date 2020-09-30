@@ -1,4 +1,4 @@
-# Java Programming
+# Java Programming with Sana Odeh Fall 2009
 
 ## Program 1
 
@@ -19,6 +19,8 @@ Binary number 11111111 can be converted back the original decimal number 255
 The hexadecimal representation of decimal 255 is FF
 
 ## Program 3
+
+[video](https://youtu.be/4RYa8g1v3RQ)
 
 How to play Craps?
 
