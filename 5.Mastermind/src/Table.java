@@ -24,11 +24,8 @@ import java.awt.event.*;
 import java.util.List;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Table extends Canvas {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private final int BLACK = 1, EMPTY = 6, GRAY = 2; // colors for key pegs
 	private int[][] grid_keypegs = new int[12][4]; // grid for key pegs
 	private int[][] grid_smallpegs = new int[24][2]; // grid for small pegs
@@ -146,6 +143,7 @@ public class Table extends Canvas {
 				grid_keypegs[y][x] = EMPTY;
 			}
 		}
+
 		for (int y = 0; y < 24; y++) {
 			for (int x = 0; x < 2; x++) {
 				grid_smallpegs[y][x] = EMPTY;
@@ -187,7 +185,7 @@ public class Table extends Canvas {
 							+ PlayMastermind.playerLastName;
 					Rank.update(tempname, playerPoints);
 				}
-			}// end if x,ycoord
+			}// end if x,y coord
 		}// end mouseClicked(MouseEvent e)
 
 		public void mouseReleased(MouseEvent e) {
@@ -224,6 +222,7 @@ public class Table extends Canvas {
 	}
 
 	public void paint(Graphics g) {
+		
 		g.clearRect(0, 0, getWidth(), getHeight());
 		g.setColor(Color.BLACK);
 
@@ -261,13 +260,27 @@ public class Table extends Canvas {
 			}// end for x
 		}// end for y
 
-		// draw grid lines for small pegs
-		for (int y = 0; y <= 24; y++) {
-			g.setColor(Color.BLACK);
-			g.drawLine(200, y * 20 + 0, 20 * 2 + 200, y * 20 + 0);
+		int grid_width = 20;
+		int left_space = 200;
+		
+		// draw background for small pegs
+		
+		for (int y = 0; y < 12; y++) { // horizontal
+			if(y%2 == 0) {
+				g.setColor(Color.orange);
+			}else {
+				g.setColor(Color.green);
+			}
+			g.fillRect(left_space,  y * grid_width * 2, grid_width *2, grid_width * 2);
 		}
-		for (int x = 0; x <= 2; x++)
-			g.drawLine(x * 20 + 200, 0, x * 20 + 200, 0 + 20 * 24);
+		
+		// draw grid lines for small pegs
+		g.setColor(Color.BLACK);
+		for (int y = 0; y <= 24; y++) //horizontal
+			g.drawLine(left_space, y * grid_width, grid_width * 2 + left_space, y * grid_width);
+		
+		for (int x = 0; x <= 2; x++) // vertical
+			g.drawLine(x * grid_width + left_space, 0, x * grid_width + left_space, grid_width * 24);
 
 		// draw small pegs
 		for (int y = 23; y >= 0; y--) {

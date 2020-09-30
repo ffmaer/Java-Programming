@@ -31,8 +31,7 @@ public class PlayMastermind {
 		menu();
 	}// end main method
 
-	public static void menu() {
-
+	public static void menu() {		
 		Object[] menuDropdown = { "About MasterMind", "Game Rules",
 				"Launch Game", "View High Scores", "Exit" }; // creates array of
 																// menu options
@@ -46,11 +45,12 @@ public class PlayMastermind {
 				JOptionPane
 						.showMessageDialog(
 								null,
-								"About Mastermind:"
-										+ "\nThis is a java version of the classic boardgame Mastermind"
-										+ ". \nIt is meant to be played by two players alternating "
-										+ "turns. \nIt has been developed by Eric Chen, Wan Huh and Tengchao Zhou\n"
-										+ "(ordered by the initial of last names) \nPlease enjoy playing Mastermind!");
+								"About Mastermind:\n"
+										+ "This is a java version of the classic boardgame Mastermind.\n"
+										+ "It is meant to be played by two players alternating tunrs.\n"
+										+ "It has been developed by Eric Chen, Wan Huh and Tengchao Zhou\n"
+										+ "(ordered by the initial of last names)\n"
+										+ "Please enjoy playing Mastermind!");
 				menu();
 			} else if (userChoice.equals(menuDropdown[1])) {
 				JOptionPane
@@ -72,6 +72,7 @@ public class PlayMastermind {
 				playerName = JOptionPane
 						.showInputDialog(null,
 								"Step 3/3\nPlease enter your user name.\nThe game will start soon!");
+				
 				Mastermind mastermind = new Mastermind();
 				mastermind.setTitle("Mastermind");
 				mastermind.setDefaultCloseOperation(3); // exits on close
@@ -96,4 +97,4 @@ public class PlayMastermind {
 			System.exit(0);
 		}
 	}
-}// end Mastermind class
+}// end Master Mind class

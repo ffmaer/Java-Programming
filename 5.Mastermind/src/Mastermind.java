@@ -2,13 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
+@SuppressWarnings("serial")
 class Mastermind extends JFrame{
-
-/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-public Mastermind(){
+	public Mastermind(){
 		
 		setLayout(new FlowLayout());
 		
