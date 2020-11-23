@@ -1,6 +1,6 @@
 # Java Programming with Sana Odeh Fall 2009
 
-## Program 1
+## Program 1 [Binary Representation of Numbers](https://web.archive.org/web/https://cs.nyu.edu/courses/fall07/V22.0101-003/asg1.htm) Part 1/2
 
 Enter a decimal number between 0 and 255, for example, 55
 
@@ -8,7 +8,7 @@ The binary representation is: 00110111
 
 Binary number 00110111 can be converted back the original decimal number 55
 
-## Program 2
+## Program 2 [Binary Representation of Numbers](https://web.archive.org/web/https://cs.nyu.edu/courses/fall07/V22.0101-003/asg1.htm) Part 2/2
 
 Enter a decimal number between 0 and 255, for example, 255
 
