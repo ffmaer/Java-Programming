@@ -18,7 +18,7 @@ Binary number 11111111 can be converted back the original decimal number 255
 
 The hexadecimal representation of decimal 255 is FF
 
-## Program 3
+## Program 3 [A Game of Craps](https://web.archive.org/web/20201123033556/https://cs.nyu.edu/courses/fall07/V22.0101-003/asg4.htm)
 
 [video](https://youtu.be/4RYa8g1v3RQ)
 
@@ -34,7 +34,7 @@ Under two scenarios, the game ends:
 * One player reaches the goal of 300 dollars.
 * One player runs out of money.
 
-## Program 4
+## Program 4 [The Game of Life](https://web.archive.org/web/20140228034851/https://cs.nyu.edu/courses/fall07/V22.0101-003/asg6.htm)
 
 ![](https://github.com/ffmaer/Java-Programming/raw/2020/4.Game-of-Life/images/big-bang.png?raw=true)
 
@@ -51,7 +51,7 @@ Under two scenarios, the game ends:
 
 >- https://en.wikipedia.org/wiki/Conway's_Game_of_Life
 
-## Program 5
+## Program 5 Mastermind
 
 Developed by Eric Chen, Wan Huh and Tengchao Zhou (ordered by the initials of their last names).
 
